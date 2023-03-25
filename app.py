@@ -20,6 +20,7 @@ app.register_blueprint(product, url_prefix='/product')
 app.register_blueprint(ticket, url_prefix='/ticket')
 app.register_blueprint(iot, url_prefix='/iot')
 
+# Renderizar a página inicial
 
 @app.route('/')
 def index():
