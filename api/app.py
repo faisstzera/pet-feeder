@@ -1,14 +1,18 @@
-from flask import Flask, render_template, session, g
-from controllers.base_controller import base
+from flask import Flask, g, render_template, session
+from flask_cors import CORS
+
 from controllers.auth_controller import auth
+from controllers.base_controller import base
 from controllers.billing_controller import billing
+from controllers.iot_controller import iot
 from controllers.payment_controller import payment
 from controllers.people_controller import people
 from controllers.product_controller import product
 from controllers.ticket_controller import ticket
-from controllers.iot_controller import iot
 
 app = Flask(__name__, template_folder="./views/", static_folder="./static/")
+
+CORS(app, resources={r'/*': {'origins': '*'}})
 
 app.register_blueprint(base, url_prefix='/base')
 
@@ -22,13 +26,14 @@ app.register_blueprint(iot, url_prefix='/iot')
 
 # Renderizar a página inicial
 
+
 @app.route('/')
 def index():
     return render_template("home.html")
 
 
 @app.route('/people', methods=['POST', 'GET'])
-def index():
+def employees():
     return render_template("home.html")
 
 
