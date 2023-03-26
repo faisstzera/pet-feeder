@@ -1,5 +1,8 @@
-from flask import Flask, g, render_template, session
+from flask import Flask, g, render_template, session, request
 from flask_cors import CORS
+from flask_login import LoginManager
+login_manager = LoginManager()
+
 
 from controllers.auth_controller import auth
 from controllers.base_controller import base
@@ -24,7 +27,12 @@ app.register_blueprint(product, url_prefix='/product')
 app.register_blueprint(ticket, url_prefix='/ticket')
 app.register_blueprint(iot, url_prefix='/iot')
 
+login_manager = LoginManager()
+login_manager.init_app(app)
+
 # Renderizar a página inicial
+
+usuarios = {}
 
 
 @app.route('/')
@@ -35,6 +43,24 @@ def index():
 @app.route('/people', methods=['POST', 'GET'])
 def employees():
     return render_template("home.html")
+
+# Função de login
+login_manager.login_view = 'login'
+
+@app.route('/auth', methods=['POST'])
+def login():
+    info = json.loads(request.data)
+    username = info.get('username', 'guest')
+    password = info.get('password', '') 
+    user = User.objects(name=username,
+                        password=password).first()
+    if user:
+        login_user(user)
+        return jsonify(user.to_json())
+    else:
+        return jsonify({"status": 401,
+                        "reason": "Username or Password Error"})
+
 
 
 if __name__ == "__main__":
