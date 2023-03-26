@@ -1,17 +1,29 @@
-<!-- base.html -->
 <html>
     <head>
-        <title>Produtos</title>
+        <title>Cadastro Adicional</title>
+        <link rel="stylesheet" type="text/css" href="../../static/css/login.css">
     </head>
     <body>
-        <h2>Módulo de gerenciamento de produtos do Meu Restaurante</h2>
-        <ul>
-            <li><a href="#">Registrar Produto</a></li>
-            <li><a href="#">Registrar Ingrediente</a></li>
-            <li><a href="#">Ligar produto a ingredientes</a></li>
-        </ul>
-        <div id="content">
-            {% block content %} {% endblock %}
-        </div>
+        <div class="container">
+            <div class="buttonsForm">
+              <div class="btnColor"></div>
+          
+              <button id="btnSignup">Cadastrar Protudo</button>
+            </div>
+            <form id="signup">
+              <input type="text" placeholder="Email" required />
+              <i class="fas fa-envelope iEmail"></i>
+              <input type="password" placeholder="Password" required />
+              <i class="fas fa-lock iPassword"></i>
+              <input type="password" placeholder="Password" required />
+              <i class="fas fa-lock iPassword2"></i>
+              <div class="divCheck">
+                <input type="checkbox" required />
+                <span>Terms</span>
+              </div>
+              <button type="submit">Sign up</button>
+            </form>
+          </div>
+          <script src="/static/js/cadastroplus.js"></script>
     </body>
 </html>
