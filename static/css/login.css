@@ -44,6 +44,12 @@ form {
   box-shadow: 0 0 7px 0 #ffd500;
 }
 
+.buttonsForm1 {
+  margin-top: 40px;
+  position: relative;
+  border-radius: 50px;
+  box-shadow: 0 0 7px 0 #ffd500;
+}
 .buttonsForm button {
   cursor: pointer;
   background: transparent;
