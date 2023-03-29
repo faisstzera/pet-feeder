@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template,redirect,url_for,request
-import auth_controller
+from auth_controller import registered_users
 
 people = Blueprint("people", __name__, template_folder='./views/', static_folder='./static/', root_path="./")
 
@@ -9,14 +9,13 @@ def people_index():
 
 @people.route("/people", methods=['GET', 'POST'])
 def get_people():
-    dict_users = auth_controller.registered_users
     
     if request.method['GET']:  
-        return dict_users, 200
+        return registered_users, 200
     
     elif request.method['POST']:
         usuario = request.form['usuario']
-        if not any(dicionario['usuario'] == usuario for dicionario in dict_users):
+        if not any(dicionario['usuario'] == usuario for dicionario in registered_users):
             return "Record not found", 400
             
         else:
@@ -31,6 +30,6 @@ def get_people():
             usuario_a_registrar [nome] = nome
             usuario_a_registrar [email] = email
 
-            dict_users.append(usuario_a_registrar)
+            registered_users.append(usuario_a_registrar)
 
             return "Usuário cadastrado!", 200
