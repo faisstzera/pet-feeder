@@ -5,3 +5,7 @@ product = Blueprint("product", __name__, template_folder='./views/', static_fold
 @product.route("/")
 def products_index():
     return render_template("/product/product_index.html")
+
+@product.route("/product")
+def products_index():
+    return render_template("/product/product_index.html")
