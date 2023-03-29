@@ -1,16 +1,43 @@
-<!-- base.html -->
+<!DOCTYPE html>
 <html>
     <head>
-        <title>Autenticação</title>
-    </head>
+        <title>login</title>
+        <link rel="stylesheet" type="text/css" href="../static/css/login.css"> 
+    <head>
     <body>
-        <h2>Módulo de autenticação do Meu Restaurante</h2>
-        <ul>
-            <li><a href="#">Efetuar Login</a></li>
-            <li><a href="#">Registrar novo Usuário</a></li>
-        </ul>
-        <div id="vertical-center">
-            {% block content %} {% endblock %}
-        </div>
+        <div class="container">
+            <div class="buttonsForm">
+              <div class="btnColor"></div>
+              <button id="btnSignin">Login</button>
+              <button id="btnSignup">Registro</button>
+            </div>
+        
+            <form medthod="POST" id="signin">
+              <input type="text" id="email" placeholder="email" required />
+              <i class="fas fa-envelope iEmail"></i>
+              <input type="password" placeholder="Password" required />
+              <i class="fas fa-lock iPassword"></i>
+              <div class="divCheck">
+                <input type="checkbox" /> 
+                <span>Remember Password</span>
+              </div>
+              <button type="submit">Sign in</button>
+            </form>
+        
+            <form id="signup">
+              <input type="text" placeholder="Email" required />
+              <i class="fas fa-envelope iEmail"></i>
+              <input type="password" placeholder="Password" required />
+              <i class="fas fa-lock iPassword"></i>
+              <input type="password" placeholder="Password" required />
+              <i class="fas fa-lock iPassword2"></i>
+              <div class="divCheck">
+                <input type="checkbox" required />
+                <span>Terms</span>
+              </div>
+              <button type="submit">Sign up</button>
+            </form>
+          </div>
+        
+          <script src="static/js/login.js"></script>
     </body>
-</html>
