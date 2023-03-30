@@ -12,19 +12,23 @@
         <a class="navbar-brand" href="#">
             <img src="static/img/170781.png" width="30" height="30" alt="">
         </a>
+        {% block content %}
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
                 <a class="nav-item nav-link" href="index.html">Base</a>
                 <a class="nav-item nav-link" href="auth/auth_index.html">Login</a>
                 <a class="nav-item nav-link" href="people/people_index.html">Pessoas</a>
-                <a class="nav-item nav-link" href="product/product_index.html">Produtos</a>
+                <a class="nav-item nav-link" href="product/product_index.html">Comedouros</a>
                 <a class="nav-item nav-link" href="iot/iot_index.html">IOT</a>
             </div>
         </div>
     </nav>
     <div id="content">
         {% block content %} {% endblock %}
+    </div>
+    <div>
+        <img src="../static/img/dash.jpeg" class="about-image img-fluid" >
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
