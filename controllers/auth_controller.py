@@ -11,7 +11,7 @@ registered_users = []
 def auth_index():
     return render_template("auth/auth_index.html")
 
-@auth.route('/auth', methods=['POST'])
+@auth.route('/auth', methods=['POST','GET'])
 def login():
     
     # Registrar o usuário
@@ -32,7 +32,7 @@ def login():
             usuario_a_registrar [nome] = nome
             usuario_a_registrar [email] = email
 
-            registered_users.append(registered_users)
+            registered_users.append(usuario_a_registrar)
 
             return "Usuário cadastrado!", 200
             
