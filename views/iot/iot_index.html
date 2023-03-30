@@ -1,18 +1,19 @@
-<!-- base.html -->
 <html>
     <head>
-        <title>Iot</title>
+        <title>Acionar Sensores</title>
+        <link rel="stylesheet" href="../../static/css/acionar.css">
+        <script src="../../static/js/acionar.js"></script>
     </head>
     <body>
-        <h2>Módulo de iot do Meu Restaurante</h2>
-        <ul>
-            <li><a href="#">Cadastrar sensor</a></li>
-            <li><a href="#">Cadastrar atuador</a></li>
-            <li><a href="#">Leitura de dados dos sensores</a></li>
-            <li><a href="#">Acionamento dos atuadores</a></li>
-        </ul>
-        <div id="content">
-            {% block content %} {% endblock %}
+        <div class="te">
+            <h1>Seu dispositivo está:</h1>
+        <div>
+        <div class="bu">
+            <span id="imagem"></span>
+            
+        
+            <button onclick="on()">Ligar</button>
+            <button onclick="off()">Desligar</button> 
         </div>
     </body>
-</html>
+</htmml>
