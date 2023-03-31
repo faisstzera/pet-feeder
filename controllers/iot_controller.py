@@ -1,14 +1,18 @@
-from flask import Blueprint, render_template,redirect,url_for, request
-from product_controller import produtos_registrados
+import json
+
+from flask import Blueprint, redirect, render_template, request, url_for
 
 iot = Blueprint("iot", __name__, template_folder = './views/', static_folder='./static/', root_path="./")
 
+
 @iot.route("/")
 def iot_index():
-    return render_template("/iot/iot_index.html")
+    # Opening JSON file
+    json_file = open('registered_products.json')
+    produtos_registrados = json.load(json_file)
+    for i in produtos_registrados['active']:
+        print(i)
+    json_file.close()
 
-@iot.route("/iot", methods=['GET'])
-def iot_index():
-    
-    if request.method['GET']:
-        return produtos_registrados, 200
+    # ler dados do json e retornar os produtos registrados
+    return render_template("/iot/iot_index.html", produtos_registrados=produtos_registrados)

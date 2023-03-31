@@ -1,35 +1,44 @@
-from flask import Blueprint, render_template,redirect,url_for,request
-from auth_controller import registered_users
+import json
+
+from flask import Blueprint, redirect, render_template, request, url_for
 
 people = Blueprint("people", __name__, template_folder='./views/', static_folder='./static/', root_path="./")
 
 @people.route("/")
 def people_index():
-    return render_template("/people/people_index.html")
+    json_file = open('registered_people.json')
+    pessoas_registradas = json.load(json_file)
+    for i in pessoas_registradas['active']:
+        print(i)
+    json_file.close()
+    return render_template("/people/people_index.html", pessoas_registradas = pessoas_registradas)
 
 @people.route("/people", methods=['GET', 'POST'])
-def get_people():
+def register_people():
     
-    if request.method['GET']:  
-        return registered_users, 200
-    
-    elif request.method['POST']:
+    # Registrar o usuário
+    if request.method['POST']:
+
         usuario = request.form['usuario']
-        if not any(dicionario['usuario'] == usuario for dicionario in registered_users):
-            return "Record not found", 400
-            
-        else:
+        
+        with open('registered_people.json', 'r') as file:
+            json_data = json.load(file)
+
+        if usuario in json_data:
             usuario_a_registrar= {}
 
             senha = request.form['senha']
             nome = request.form['nome']
             email = request.form['email']
 
-            usuario_a_registrar [usuario] = usuario
-            usuario_a_registrar [senha] = senha
-            usuario_a_registrar [nome] = nome
-            usuario_a_registrar [email] = email
+            usuario_a_registrar['usuario'] = usuario
+            usuario_a_registrar['senha'] = senha
+            usuario_a_registrar['nome'] = nome
+            usuario_a_registrar['email'] = email
 
-            registered_users.append(usuario_a_registrar)
-
-            return "Usuário cadastrado!", 200
+            with open('registered_people.json', 'w') as file:
+                json.dump(json_data, file, indent=2)
+            
+            return json_data, 200
+        else:
+            return('Usuário Já cadastrado', 400)

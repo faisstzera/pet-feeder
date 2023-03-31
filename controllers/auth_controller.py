@@ -1,10 +1,8 @@
-from flask import Blueprint, render_template, redirect, url_for, request
 import json
 
-auth = Blueprint("auth", __name__, template_folder="./views/", static_folder='./static/', root_path="./")
+from flask import Blueprint, redirect, render_template, request, url_for
 
-global registered_users
-registered_users = []
+auth = Blueprint("auth", __name__, template_folder="./views/", static_folder='./static/', root_path="./")
 
 
 @auth.route("/")
@@ -16,41 +14,42 @@ def login():
     
     # Registrar o usuário
     if request.method['POST']:
+
         usuario = request.form['usuario']
-        if not any(dicionario['usuario'] == usuario for dicionario in registered_users):
-            return "Record not found", 400
-            
-        else:
+        
+        with open('registered_people.json', 'r') as file:
+            json_data = json.load(file)
+
+        if usuario in json_data:
             usuario_a_registrar= {}
 
             senha = request.form['senha']
             nome = request.form['nome']
             email = request.form['email']
 
-            usuario_a_registrar [usuario] = usuario
-            usuario_a_registrar [senha] = senha
-            usuario_a_registrar [nome] = nome
-            usuario_a_registrar [email] = email
+            usuario_a_registrar['usuario'] = usuario
+            usuario_a_registrar['senha'] = senha
+            usuario_a_registrar['nome'] = nome
+            usuario_a_registrar['email'] = email
 
-            registered_users.append(usuario_a_registrar)
-
-            return "Usuário cadastrado!", 200
+            with open('registered_people.json', 'w') as file:
+                json.dump(json_data, file, indent=2)
             
-        
-
+            return json_data,200
+        else:
+            return('Usuário Já cadastrado', 400)
+                
     # Fazer login
     elif request.method['GET']:
         usuario_request = request.form['usuario']
         senha_request = request.form['senha']
 
-        dict_usuario = list(filter(lambda person: person['usuario'] == usuario_request, registered_users))[0]
+        with open('registered_people.json', 'r') as file:
+            json_data = json.load(file)
 
-        if len(dict_usuario)>0:
-                if (dict_usuario[usuario] == usuario_request) and (dict_usuario[senha] == senha_request):
-                    return redirect('/', 200)
-                else:
-                    return "Senha não cadastrada!", 400
+        if json_data['usuario'] == usuario_request and json_data['senha'] == senha_request:
+            return redirect('/', code=200)
 
         else:
-            return "Usuário já cadastrado", 400
+            return "Senha Incorreta", 403
 

@@ -1,5 +1,5 @@
-from flask import Flask, g, render_template, session, request
-from flask_cors import CORS
+from flask import Flask, g, render_template, request, session
+
 from controllers.auth_controller import auth
 from controllers.base_controller import base
 from controllers.billing_controller import billing
@@ -10,8 +10,6 @@ from controllers.product_controller import product
 from controllers.ticket_controller import ticket
 
 app = Flask(__name__, template_folder="./views/", static_folder="./static/")
-
-CORS(app, resources={r'/*': {'origins': '*'}})
 
 app.register_blueprint(base, url_prefix='/base')
 
