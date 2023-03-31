@@ -17,7 +17,7 @@ def register_product():
         numero_cadastro = request.form['numero_cadastro']
     
     if numero_cadastro in produtos_a_registrar:
-        with open('registered_products.json', 'r') as file:
+        with open('/controllers/registered_products.json', 'r') as file:
             json_data = json.load(file)
             json_data['produto'] = numero_cadastro
             json_data['ativo']= False

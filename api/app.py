@@ -1,4 +1,5 @@
-from flask import Flask, g, render_template, request, session
+from flask import Flask, g, render_template, session
+from flask_cors import CORS
 
 from controllers.auth_controller import auth
 from controllers.base_controller import base
@@ -10,6 +11,8 @@ from controllers.product_controller import product
 from controllers.ticket_controller import ticket
 
 app = Flask(__name__, template_folder="./views/", static_folder="./static/")
+
+CORS(app, resources={r'/*': {'origins': '*'}})
 
 app.register_blueprint(base, url_prefix='/base')
 
@@ -23,9 +26,15 @@ app.register_blueprint(iot, url_prefix='/iot')
 
 # Renderizar a página inicial
 
+
 @app.route('/')
 def index():
-    return render_template("index.html")
+    return render_template("home.html")
+
+
+@app.route('/people', methods=['POST', 'GET'])
+def employees():
+    return render_template("home.html")
 
 
 if __name__ == "__main__":
