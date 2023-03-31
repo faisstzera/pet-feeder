@@ -19,7 +19,8 @@ def register_product():
     if numero_cadastro in produtos_a_registrar:
         with open('registered_products.json', 'r') as file:
             json_data = json.load(file)
-            json_data[numero_cadastro] = False
+            json_data['produto'] = numero_cadastro
+            json_data['ativo']= False
         with open('registered_products.json', 'w') as file:
             json.dump(json_data, file, indent=2)
         
