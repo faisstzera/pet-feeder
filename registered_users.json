@@ -1,0 +1,32 @@
+{
+  "aleeee": {
+    "usuario": "aleeee",
+    "senha": "12345",
+    "nome": "alexandre",
+    "email": "alefaisst10@gmail.com"
+  },
+  "aleeeee": {
+    "usuario": "aleeeee",
+    "senha": "098765",
+    "nome": "alexandre",
+    "email": "ale@email.com"
+  },
+  "alee": {
+    "usuario": "alee",
+    "senha": "123",
+    "nome": "alexandre f",
+    "email": "ale@email.com"
+  },
+  "ale": {
+    "usuario": "ale",
+    "senha": "123",
+    "nome": "alexandre",
+    "email": "ale@email.com"
+  },
+  "alexandre": {
+    "usuario": "alexandre",
+    "senha": "123",
+    "nome": "alexandre.faisst",
+    "email": "ale@email.com"
+  }
+}

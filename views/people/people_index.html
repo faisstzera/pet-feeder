@@ -1,20 +1,23 @@
-<!-- base.html -->
+{% extends "base.html" %}
 <html>
-    <head>
-        <title>Responsáveis</title>
-    </head>
-    <body>
-        <h2>Módulo de gerenciamento dos responsáveis</h2>
-        <ul>
-            <li><a href="../../controllers/auth_controller.py">Registrar um novo administrador</a></li>
-        </ul>
-        <div id="usuarios">
-            <h2> Responsável 1: Edson, @eder.gats, administrador</h2>
-            <h2> Responsável 2: Jackson, @jackson.dogs, cuidador</h2>
-            <h2> Responsável 3: Jucivaldo, @jucivendo.gats.dogs, cuidador</h2>
-        </div>
-        <div id="content">
-            {% block content %} {% endblock %}
-        </div>
-    </body>
+
+<head>
+    <title>Responsáveis</title>
+</head>
+
+<body>
+    <h2>Módulo de gerenciamento dos responsáveis</h2>
+    <ul>
+        <li><a href="../../controllers/auth_controller.py">Registrar um novo administrador</a></li>
+    </ul>
+    <div id="usuarios">
+        <h2> Responsável 1: Edson, @eder.gats, administrador</h2>
+        <h2> Responsável 2: Jackson, @jackson.dogs, cuidador</h2>
+        <h2> Responsável 3: Jucivaldo, @jucivendo.gats.dogs, cuidador</h2>
+    </div>
+    <div id="content">
+        {% block content %} {% endblock %}
+    </div>
+</body>
+
 </html>

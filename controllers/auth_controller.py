@@ -1,55 +1,65 @@
 import json
+import os
 
-from flask import Blueprint, redirect, render_template, request, url_for
+from flask import (Blueprint, Response, redirect, render_template, request,
+                   url_for)
 
-auth = Blueprint("auth", __name__, template_folder="./views/", static_folder='./static/', root_path="./")
+auth = Blueprint("auth", __name__, template_folder="./views/",
+                 static_folder='./static/', root_path="./")
 
 
 @auth.route("/")
 def auth_index():
     return render_template("auth/auth_index.html")
 
-@auth.route('/auth', methods=['POST','GET'])
+
+@auth.route('/login', methods=['POST', 'GET'])
 def login():
-    
+
     # Registrar o usuário
-    if request.method['POST']:
-
+    if request.method == 'POST':
         usuario = request.form['usuario']
-        
-        with open('registered_people.json', 'r') as file:
-            json_data = json.load(file)
+        senha = request.form['senha']
+        nome = request.form['nome']
+        email = request.form['email']
 
-        if usuario in json_data:
-            usuario_a_registrar= {}
+        try:
+            with open('registered_users.json', 'r') as file:
+                json_data = json.load(file)
+            print(json_data)
+        except FileNotFoundError:
+            json_data = {}
 
-            senha = request.form['senha']
-            nome = request.form['nome']
-            email = request.form['email']
-
+        if usuario not in json_data:
+            usuario_a_registrar = {}
             usuario_a_registrar['usuario'] = usuario
             usuario_a_registrar['senha'] = senha
             usuario_a_registrar['nome'] = nome
             usuario_a_registrar['email'] = email
 
-            with open('registered_people.json', 'w') as file:
+            json_data[usuario] = usuario_a_registrar
+
+            with open('registered_users.json', 'w') as file:
                 json.dump(json_data, file, indent=2)
-            
-            return json_data,200
+
+            return Response('', 200)
         else:
-            return('Usuário Já cadastrado', 400)
-                
+            return Response('', 400)
+
     # Fazer login
-    elif request.method['GET']:
+    elif request.method == 'GET':
         usuario_request = request.form['usuario']
         senha_request = request.form['senha']
 
-        with open('registered_people.json', 'r') as file:
-            json_data = json.load(file)
+        try:
+            with open('registered_users.json', 'r') as file:
+                json_data = json.load(file)
+        except FileNotFoundError:
+            json_data = {}
 
-        if json_data['usuario'] == usuario_request and json_data['senha'] == senha_request:
+        if usuario_request in json_data and json_data[usuario_request]['senha'] == senha_request:
             return redirect('/', code=200)
-
         else:
-            return "Senha Incorreta", 403
-
+            return Response('', 500)
+    else:
+        return Response('', 404)

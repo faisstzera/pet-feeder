@@ -1,0 +1,10 @@
+[
+    {
+        "produto": 100,
+        "ativo": true
+    },
+    {
+        "produto": 200,
+        "ativo": false
+    }
+]

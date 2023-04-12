@@ -1,169 +1,168 @@
 {% extends "base.html" %}
 {% block content %}
 
-        <div class="container">
+<div class="container">
 
-            <a class="navbar-brand" href="#">
-                Pagina Inicial
-            </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+                <a href="#intro" class="nav-link smoothScroll">Introdução</a>
+            </li>
 
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mx-auto">
-                    <li class="nav-item">
-                        <a href="#intro" class="nav-link smoothScroll">Introdução</a>
-                    </li>
+            <li class="nav-item">
+                <a href="#about" class="nav-link smoothScroll">Projeto</a>
+            </li>
 
-                    <li class="nav-item">
-                        <a href="#about" class="nav-link smoothScroll">Projeto</a>
-                    </li>
+            <li class="nav-item">
+                <a href="#testimonials" class="nav-link smoothScroll">Autores</a>
+            </li>
 
-                    <li class="nav-item">
-                        <a href="#testimonials" class="nav-link smoothScroll">Autores</a>
-                    </li>
 
-                  
-                </ul>
+        </ul>
 
-                <div class="mt-lg-0 mt-3 mb-4 mb-lg-0">
-                    <a href="auth/auth_index.html" class="custom-btn btn" >Login</a>
+        <div class="mt-lg-0 mt-3 mb-4 mb-lg-0">
+            <a href="auth/auth_index.html" class="custom-btn btn">Login</a>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- HERO -->
+<section class="hero d-flex flex-column justify-content-center align-items-center" id="intro">
+
+    <div class="container">
+        <div class="row">
+
+            <div class="gato">
+                <img src="../static/img/cat.jpg">
+            </div>
+
+            <div class="rol">
+                <div class="hero-text">
+
+                    <h1>Pet-Feeder Online</h1>
+                    <p>Alimente seu Pet a Distância</p>
+
                 </div>
             </div>
 
         </div>
+    </div>
+</section>
 
 
-    <!-- HERO -->
-    <section class="hero d-flex flex-column justify-content-center align-items-center" id="intro">
 
-         <div class="container">
-            <div class="row">
+<section class="about section-padding" id="about">
+    <div class="container">
+        <hr>
+        <div class="row">
 
-                  <div class="gato">
-                      <img src="../static/img/cat.jpg">
-                  </div>
+            <div class="col6">
+                <h3>Alimentador de Pet IOT</h3>
 
-                   <div class="rol">
-                        <div class="hero-text">
-                        
-                            <h1>Pet-Feeder Online</h1>
-                            <p>Alimente seu Pet a Distância</p>
-                          
+                <p>Ola! nosso projeto visa ajudar as pessoas que não possuem muito tempo para cuidar de seus preciosos
+                    pets</p>
+                <p>Com o Alimentador de Pet IOT eles poderão alimentar seus Pets remotamente assim poupando tempo e
+                    fazendo com que tenham a segurança que seus pets estão alimentados</p>
+
+            </div>
+
+            <div class="imgrol">
+                <img src="../static/img/pet.jpg" class="about-image img-fluid">
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- TESTIMONIAL -->
+<section class="testimonials section-padding" id="testimonials">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-12">
+                <h3 class="mb-5 text-center">Autores</h3>
+
+                <div class="owl-carousel owl-theme" id="testimonials-carousel">
+                    <div class="item">
+                        <div class="testimonials-thumb d-flex">
+                            <div class="testimonials-image">
+                                <img src="../static/img/testimonials/ce.jpg" class="imgce">
+                            </div>
+
+                            <div class="testimonials-info">
+                                <p>César</p>
+                            </div>
                         </div>
                     </div>
 
-            </div>
-        </div>
-    </section>
-
-    
-
-    <section class="about section-padding" id="about">
-        <div class="container">
-          <hr>
-            <div class="row">
-
-                <div class="col6">
-                    <h3>Alimentador de Pet IOT</h3>
-
-                    <p>Ola! nosso projeto visa ajudar as pessoas que não possuem muito tempo para cuidar de seus preciosos pets</p>
-                    <p>Com o Alimentador de Pet IOT eles poderão alimentar seus Pets remotamente assim poupando tempo e fazendo com que tenham a segurança que seus pets estão alimentados</p>
-
-                </div>
-
-                <div class="imgrol">
-                    <img src="../static/img/pet.jpg" class="about-image img-fluid" >
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-
-    <!-- TESTIMONIAL -->
-     <section class="testimonials section-padding" id="testimonials">
-          <div class="container">
-               <div class="row">
-
-                    <div class="col-12">
-                        <h3 class="mb-5 text-center">Autores</h3>
-
-                        <div class="owl-carousel owl-theme" id="testimonials-carousel">
-                            <div class="item">
-                                <div class="testimonials-thumb d-flex">
-                                    <div class="testimonials-image">
-                                        <img src="../static/img/testimonials/ce.jpg" class="imgce">
-                                    </div>
-
-                                    <div class="testimonials-info">
-                                        <p>César</p>                                        
-                                    </div>
-                                </div>
+                    <div class="item">
+                        <div class="testimonials-thumb d-flex">
+                            <div class="testimonials-image">
+                                <img src="../static/img/testimonials/pa.jpg" class="imgce">
                             </div>
 
-                            <div class="item">
-                                <div class="testimonials-thumb d-flex">
-                                    <div class="testimonials-image">
-                                        <img src="../static/img/testimonials/pa.jpg" class="imgce" >
-                                    </div>
-
-                                    <div class="testimonials-info">
-                                        <p>Paula</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="item">
-                                <div class="testimonials-thumb d-flex">
-                                    <div class="testimonials-image">
-                                        <img src="../static/img/testimonials/ale.jpg" class="imgce">
-                                    </div>
-
-                                    <div class="testimonials-info">
-                                        <p>Alexandre Faisst</p>
-                                    </div>
-                                </div>
+                            <div class="testimonials-info">
+                                <p>Paula</p>
                             </div>
                         </div>
-
                     </div>
 
-               </div>
-          </div>
-     </section>
+                    <div class="item">
+                        <div class="testimonials-thumb d-flex">
+                            <div class="testimonials-image">
+                                <img src="../static/img/testimonials/ale.jpg" class="imgce">
+                            </div>
 
-
-     <!-- FAQ -->
-     <section class="faq section-padding">
-        
-        <div class="container">
-            
-            <div class="row">
-
-                <div class="col-lg-12 col-12">
-
-                  
-
+                            <div class="testimonials-info">
+                                <p>Alexandre Faisst</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-           	 </div><!-- col -->
-        	</div><!-- row -->
-        </div><!-- container -->
-    </section>
+            </div>
+
+        </div>
+    </div>
+</section>
 
 
-    
+<!-- FAQ -->
+<section class="faq section-padding">
 
-            
+    <div class="container">
 
-     
-     <!-- SCRIPTS -->
-     <script src="js/jquery.min.js"></script>
-     <script src="js/bootstrap.min.js"></script>
-     <script src="js/smoothscroll.js"></script>
-     <script src="js/owl.carousel.min.js"></script>
-     <script src="js/custom.js"></script>
+        <div class="row">
+
+            <div class="col-lg-12 col-12">
+
+
+
+            </div>
+
+        </div><!-- col -->
+    </div><!-- row -->
+    </div><!-- container -->
+</section>
+
+
+
+
+
+
+
+<!-- SCRIPTS -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/smoothscroll.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/custom.js"></script>
 {% endblock %}

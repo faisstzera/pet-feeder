@@ -1,36 +1,39 @@
+{% extends "base.html" %}
 <html>
-    <head>
-        <title>Acionar Sensores</title>
-        <link rel="stylesheet" href="../../static/css/acionar.css">
-        <script src="../../static/js/acionar.js"></script>
-    </head>
-    <body>
+
+<head>
+    <title>Acionar Sensores</title>
+    <link rel="stylesheet" href="../../static/css/acionar.css">
+    <script src="../../static/js/acionar.js"></script>
+</head>
+
+<body>
+    <div>
+        <ul>
+            {% for produto in produtos_registrados %}
+            {% if produto['ativo'] == False %}
+
+            <div class="card-product">
+                <h2>
+                    {{produto['produto']}}
+                </h2>
+                <button>Ligar alimentador</button>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="te">
+        <h1>Seu dispositivo está:</h1>
         <div>
-            <ul>
-                {% for produto in produtos_registrados %}
-                    {% if produto['ativo'] == False %}
-                               
-                       <div class="card-product">
-                        <h2>
-                            {{produto['produto']}}
-                        </h2>
-                        <button>Ligar alimentador</button>
-                        </div>
-                    {% endif %}
-                {% endfor %}
-                </ul>
-        </div>
-        <div class="te">
-            <h1>Seu dispositivo está:</h1>
-        <div>
-        <div class="bu">
-               
-
-            <span id="imagem"></span>
-            <button onclick="on()">Ligar</button>
-            <button onclick="off()">Desligar</button> 
+            <div class="bu">
 
 
-        </div>
-    </body>
+                <span id="imagem"></span>
+                <button onclick="on()">Ligar</button>
+                <button onclick="off()">Desligar</button>
+
+
+            </div>
+</body>
 </htmml>

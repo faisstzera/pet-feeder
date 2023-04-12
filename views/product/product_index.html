@@ -1,30 +1,23 @@
-<html>
-    <head>
-        <title>Cadastro Adicional</title>
-        <link rel="stylesheet" type="text/css" href="../../static/css/cadastroplus.css">
+{% extends "base.html" %}
+{%block content%}
+<div class="container">
+  <div class="buttonsForm">
+    <div class="btnColor"></div>
 
-    </head>
-    <body>
-        <div class="container">
-            <div class="buttonsForm">
-              <div class="btnColor"></div>
-
-              <button id="btnSignup">Cadastrar IOTS</button>
-            </div>
-            <form id="signup">
-              <input type="text" placeholder="Code" required />
-              <i class="fas fa-envelope iEmail"></i>
-            </form>
-            <div class="buttonsForm1">
-              <div class="btnColor1"></div>
-              <button id="btnSignup">Confirme</button>
-            </div>
-            </div>
-          </div>
-          <script src="../../static/js/cadastroplus.js"></script>
-    </body>
-</html>
-
+    <button id="btnSignup">Cadastrar IOTS</button>
+  </div>
+  <form id="signup">
+    <input type="text" placeholder="Code" required />
+    <i class="fas fa-envelope iEmail"></i>
+  </form>
+  <div class="buttonsForm1">
+    <div class="btnColor1"></div>
+    <button id="btnSignup">Confirme</button>
+  </div>
+</div>
+</div>
+<script src="../../static/js/cadastroplus.js"></script>
+{% endblock %}
 <!-- <form method="POST" id="signup">
               <input type="text" id="usuario" placeholder="Usuario" required />
               <i class="fas fa-envelope iUsuario"></i> -->
